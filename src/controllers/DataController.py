@@ -5,6 +5,7 @@ from models import ResponseMessage
 import re
 import os
 
+
 class DataController(BaseController):
     def __init__(self):
         super().__init__()
@@ -27,7 +28,7 @@ class DataController(BaseController):
 
         while True:
             random_file_name = self.generate_random_string()
-            new_file_path = os.path.join(project_dir_path, f"{cleaned_file_name}_{random_file_name}")
+            new_file_path = os.path.join(project_dir_path, f"{random_file_name}_{cleaned_file_name}")
             if not os.path.exists(new_file_path):
                 return new_file_path
 
