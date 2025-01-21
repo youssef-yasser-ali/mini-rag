@@ -22,7 +22,7 @@ class DataController(BaseController):
         return True, ResponseMessage.FILEUPLOADSUCCESS.value
 
 
-    def generate_unique_file_name(self, file_name: str, project_id: str):
+    def generate_unique_file_path(self, file_name: str, project_id: str):
         project_dir_path = ProjectController().get_project_path(project_id)
         cleaned_file_name = self.get_cleaned_file_name(file_name)
 
@@ -30,7 +30,7 @@ class DataController(BaseController):
             random_file_name = self.generate_random_string()
             new_file_path = os.path.join(project_dir_path, f"{random_file_name}_{cleaned_file_name}")
             if not os.path.exists(new_file_path):
-                return new_file_path
+                return new_file_path , f"{random_file_name}_{cleaned_file_name}"
 
     def get_cleaned_file_name(self,file_name: str):
         return re.sub(r'[^\w\s.]', '', file_name.strip())

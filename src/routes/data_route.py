@@ -23,7 +23,7 @@ async def upload_data(project_id: str , file: UploadFile = File(...) , app_setti
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"message": response_message
         })
     
-    file_path =  data_controller.generate_unique_file_name(file_name=file.filename,project_id= project_id)
+    file_path , file_id =  data_controller.generate_unique_file_path(file_name=file.filename,project_id= project_id)
 
 
     try :
@@ -36,4 +36,4 @@ async def upload_data(project_id: str , file: UploadFile = File(...) , app_setti
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"message": ResponseMessage.FILEUPLOADFAILED.value})
     
 
-    return JSONResponse(content={"message": ResponseMessage.FILEUPLOADSUCCESS.value})
+    return JSONResponse(content={"message": ResponseMessage.FILEUPLOADSUCCESS.value , "file_id": file_id})
