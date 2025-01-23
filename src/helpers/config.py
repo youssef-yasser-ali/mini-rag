@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     FILE_ALLOWED_TYPES: str
     FILE_MAX_SIZE : int
     FILE_DEFAULT_CHUNK_SIZE:int
+    MONGO_URL: str
+    MONGO_DATABASE: str
+    
 
 
     class Config:
