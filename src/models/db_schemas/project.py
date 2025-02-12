@@ -1,9 +1,10 @@
-from pydantic import BaseModel ,Field,  field_validator
+from pydantic import BaseModel ,Field,  field_validator , ConfigDict
 from typing import List, Optional
 from bson.objectid import ObjectId
 
-class project(BaseModel):
-    _id :  Optional[ObjectId]
+class Project(BaseModel):
+    id :  Optional[ObjectId] = Field(None, alias='_id')
+
     project_id : str = Field(...,  min_length=1)
 
 
@@ -13,9 +14,15 @@ class project(BaseModel):
         if not v.isalnum():
             raise ValueError('project_id must be alphanumeric')
         return v
+    
+    @classmethod
+    def get_indexing(cls):
 
+        return [
+            {"key": [("project_id", 1)], "name": "project_id_index", "unique": True}
+        ]
+         
 
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
-    class config:
-        arbitary_types_allowed = True
 

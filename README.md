@@ -8,12 +8,15 @@ This is a minimal implementation of the RAG model for question answering.
 
 #### Install Python using MiniConda
 
-1) Download and install MiniConda from [here](https://docs.anaconda.com/free/miniconda/#quick-command-line-install)
-2) Create a new environment using the following command:
+1. Download and install MiniConda from [here](https://docs.anaconda.com/free/miniconda/#quick-command-line-install)
+2. Create a new environment using the following command:
+
 ```bash
 $ conda create -n mini-rag python=3.8
 ```
-3) Activate the environment:
+
+3. Activate the environment:
+
 ```bash
 $ conda activate mini-rag
 ```
@@ -39,6 +42,18 @@ $ cp .env.example .env
 ```
 
 Set your environment variables in the `.env` file. Like `OPENAI_API_KEY` value.
+
+## Run Docker Compose Services
+
+```bash
+$ cd docker
+$ cp .env.example .env
+```
+
+```bash
+$ cd docker
+$ sudo docker compose up -d
+```
 
 ## Run the FastAPI server
 
