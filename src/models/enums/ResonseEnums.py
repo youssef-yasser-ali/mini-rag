@@ -12,7 +12,7 @@ class ResponseMessage(Enum):
     PROJECTNOTFOUND = "Project not found"
     PROJECTDELETED = "Project deleted successfully"
     PROJECTUPDATED = "Project updated successfully"
-    
-
+    NOFILEERROR = "No file uploaded"
+    FILENOTEXIST = "File does not exist"
 
 

@@ -25,6 +25,9 @@ class ProcessController(BaseController):
 
         file_path = os.path.join(self.project_path , file_id)
 
+        if not os.path.exists(file_path):
+            return None
+
         file_extension = self.get_file_extension(file_id)
 
         if file_extension in ProcessingEnums.TEXT_EXTENSIONS.value:
@@ -37,7 +40,11 @@ class ProcessController(BaseController):
 
     def get_file_content(self,file_id: str):
         loader = self.get_file_loader(file_id)
-        return loader.load()
+
+        if loader :
+            return loader.load()
+        
+        return None 
     
 
     def process_file_content(self,file_content: str , chunk_size: int , chunk_overlap: int ):
