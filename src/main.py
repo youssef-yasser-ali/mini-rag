@@ -29,8 +29,6 @@ async def close_resources():
 
 
 
-
-
 app.add_event_handler("startup", initialize_resources)
 app.add_event_handler("shutdown", close_resources)
 
