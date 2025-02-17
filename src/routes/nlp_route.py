@@ -1,8 +1,7 @@
-from fastapi import  APIRouter , Depends , File , UploadFile , status,Request
+from fastapi import  APIRouter , status,Request
 from fastapi.responses import JSONResponse
 import os
-from models import ResponseMessage , AssetsEnums
-from helpers.config import get_settings , Settings
+from models import ResponseMessage 
 from .schemas.data_schema import ProcessRequest 
 from .schemas.nlp_schema import PushRequest , SearchRequest
 from models import ProjectModel , ChunkModel
