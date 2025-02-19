@@ -23,3 +23,9 @@ class DataChunk(BaseModel):
 
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
+
+
+
+class RetrievedDocument(BaseModel):
+    text: str
+    score: float
